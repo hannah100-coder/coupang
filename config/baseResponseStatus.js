@@ -21,8 +21,8 @@ module.exports = {
     SIGNUP_EMAIL_ERROR_TYPE : { "isSuccess": false, "code": 2003, "message":"이메일을 형식을 정확하게 입력해주세요." },
     SIGNUP_PASSWORD_EMPTY : { "isSuccess": false, "code": 2004, "message": "비밀번호를 입력 해주세요." },
     SIGNUP_PASSWORD_LENGTH : { "isSuccess": false, "code": 2005, "message":"비밀번호는 6~20자리를 입력해주세요." },
-    SIGNUP_NICKNAME_EMPTY : { "isSuccess": false, "code": 2006, "message":"닉네임을 입력 해주세요." },
-    SIGNUP_NICKNAME_LENGTH : { "isSuccess": false,"code": 2007,"message":"닉네임은 최대 20자리를 입력해주세요." },
+    SIGNUP_USERNAME_EMPTY : { "isSuccess": false, "code": 2006, "message":"이름을 입력 해주세요." },
+    SIGNUP_USERNAME_LENGTH : { "isSuccess": false,"code": 2007,"message":"이름은 최대 20자리를 입력해주세요." },
 
     //SIGNIN
     SIGNIN_EMAIL_EMPTY : { "isSuccess": false, "code": 2008, "message":"이메일을 입력해주세요" },
@@ -51,7 +51,7 @@ module.exports = {
     STORE_CATEGORYNAME_EMPTY: { "isSuccess": false, "code": 2023, "message": "카테고리명을 입력해주세요." },
     STORE_CATEGORYNAME_NOT_EXIST: { "isSuccess": false, "code": 2024, "message": "해당 카테고리 결과가 존재하지 않습니다." },
     STORE_CATEGORYINDEX_EMPTY: { "isSuccess": false, "code": 2025, "message": "카테고리번호를 입력해주세요." },
-    STORE_CATEGORYINDEX_NOT_EXIST: { "isSuccess": false, "code": 2026, "message": "해당 카테고리 결과가 존재하지 않습니다." },
+    STORE_CATEGORYINDEX_NOT_EXIST: { "isSuccess": false, "code": 2026, "message": "해당 카테고리의 가게가 존재하지 않습니다." },
 
     STORE_STOREINTRO_EMPTY: {"isSuccess": false, "code": 2027, "message": "가게 소개를 입력해주세요." },
     STORE_STARGRADE_EMPTY: {"isSuccess": false, "code": 2028, "message": "가게 별점을 입력해주세요." },
@@ -61,7 +61,7 @@ module.exports = {
     SIGNUP_REDUNDANT_EMAIL : { "isSuccess": false, "code": 3001, "message":"중복된 이메일입니다." },
     SIGNUP_REDUNDANT_NICKNAME : { "isSuccess": false, "code": 3002, "message":"중복된 닉네임입니다." },
 
-    SIGNIN_EMAIL_WRONG : { "isSuccess": false, "code": 3003, "message": "아이디가 잘못 되었습니다." },
+    SIGNIN_EMAIL_WRONG : { "isSuccess": false, "code": 3003, "message": "이메일이 잘못 되었습니다." },
     SIGNIN_PASSWORD_WRONG : { "isSuccess": false, "code": 3004, "message": "비밀번호가 잘못 되었습니다." },
     SIGNIN_INACTIVE_ACCOUNT : { "isSuccess": false, "code": 3005, "message": "비활성화 된 계정입니다. 고객센터에 문의해주세요." },
     SIGNIN_WITHDRAWAL_ACCOUNT : { "isSuccess": false, "code": 3006, "message": "탈퇴 된 계정입니다. 고객센터에 문의해주세요." },

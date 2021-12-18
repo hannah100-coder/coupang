@@ -60,3 +60,21 @@ exports.postUsers = async function (req, res) {
     // signUpResponse 값을 json으로 전달
     return res.send(signUpResponse);
 };
+
+// TODO: After 로그인 인증 방법 (JWT)
+/**
+ * API No. 2
+ * API Name : 로그인 API
+ * [POST] /app/login
+ * body : email, passsword
+ */
+ exports.login = async function (req, res) {
+
+    const {userEmail, userPassword} = req.body;
+
+    //validation 처리
+
+    const signInResponse = await coupangeatsUserService.postSignIn(userEmail, userPassword);
+
+    return res.send(signInResponse);
+};

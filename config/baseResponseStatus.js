@@ -12,6 +12,10 @@ module.exports = {
 
     //Request error
     //SIGNUP
+    SIGNUP_PHONE_EMPTY : { "isSuccess": false, "code": 1997, "message":"휴대폰 번호를 입력해주세요" },
+    SIGNUP_PHONE_LENGTH : { "isSuccess": false, "code": 1998, "message":"휴대폰 번호는 12자리 미만으로 입력해주세요." },
+    SIGNUP_PHONE_ERROR_TYPE : { "isSuccess": false, "code": 1999, "message":"휴대폰 번호 형식을 정확하게 입력해주세요." },
+
     SIGNUP_EMAIL_EMPTY : { "isSuccess": false, "code": 2001, "message":"이메일을 입력해주세요" },
     SIGNUP_EMAIL_LENGTH : { "isSuccess": false, "code": 2002, "message":"이메일은 30자리 미만으로 입력해주세요." },
     SIGNUP_EMAIL_ERROR_TYPE : { "isSuccess": false, "code": 2003, "message":"이메일을 형식을 정확하게 입력해주세요." },

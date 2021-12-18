@@ -72,3 +72,21 @@ exports.postUsers = async function (req, res) {
     // signUpResponse 값을 json으로 전달
     return res.send(signUpResponse);
 };
+
+/**
+ * API No. 8
+ * API Name : 회원 주소 입력
+ * [POST] /app/users/postAddress
+ */
+exports.postUserAddress = async function (req, res) {
+
+    /*
+    Body: userIndex, userAddress
+     */
+
+    const {userIndex, userAddress} = req.body;
+
+    const addUserAddress = await coupangeatsUserService.addUserAddress(userIndex, userAddress);
+    return res.send(addUserAddress);
+};
+

@@ -117,3 +117,24 @@ exports.createUser = async function (userEmail, userPassword, userName, userPhon
 //     //    return errResponse(baseResponse.DB_ERROR);
 //     // }
 // };
+
+//주소 입력
+exports.addUserAddress = async function (userIndex, userAddress) {
+        //try {
+
+        if(!userIndex){
+                return response(baseResponse.USER_USERID_EMPTY);
+        }else{
+                const connection = await pool.getConnection(async (conn) => conn);
+                const addUserAddressResult = await coupangeatsUserDao.updateUserAddress(connection, userIndex, userAddress)
+                connection.release();
+
+                return response(baseResponse.SUCCESS);
+        }
+
+
+        // } catch (err) {
+        //         logger.error(`App - editUser Service error\n: ${err.message}`);
+        //         return errResponse(baseResponse.DB_ERROR);
+        // }
+};

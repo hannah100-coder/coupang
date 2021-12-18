@@ -23,9 +23,19 @@ async function insertUserInfo(connection, insertUserInfoParams) {
     return insertUserInfoRow;
 }
 
-
+//유저 주소 입력
+async function updateUserAddress(connection, userIndex, userAddress) {
+    const updateUserAddressQuery = `
+  UPDATE User
+  SET userAddress = ?
+  WHERE userIndex = ?;
+  `;
+    const updateUserAddressRow = await connection.query(updateUserAddressQuery, [userAddress, userIndex]);
+    return updateUserAddressRow[0];
+}
 
 module.exports = {
     selectUserEmail,
-    insertUserInfo
+    insertUserInfo,
+    updateUserAddress
 };

@@ -18,7 +18,7 @@ exports.getStoreByFoodCategoryIndex = async function (req, res) {
 
     if (!foodCategoryIndex) {
         // "해당 카테고리가 존재하지 않습니다."  메세지 출력
-        return res.send(response(baseResponse.STORE_CATEGORYNAME_EMPTY));
+        return res.send(response(baseResponse.STORE_CATEGORYINDEX_EMPTY));
     } else {
         // 카테고리 이름으로 가게 검색 조회
         //console.log("yes controller: ", categoryName);
@@ -26,7 +26,7 @@ exports.getStoreByFoodCategoryIndex = async function (req, res) {
 
         //틀린 값 입력했을 경우
         if(storeListByFoodCategoryIndex == 0){
-            return res.send(response(baseResponse.STORE_CATEGORYNAME_NOT_EXIST));
+            return res.send(response(baseResponse.STORE_CATEGORYINDEX_NOT_EXIST));
         }
 
         return res.send(response(baseResponse.SUCCESS, storeListByFoodCategoryIndex));

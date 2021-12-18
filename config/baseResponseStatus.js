@@ -50,9 +50,11 @@ module.exports = {
 
     STORE_CATEGORYNAME_EMPTY: { "isSuccess": false, "code": 2023, "message": "카테고리명을 입력해주세요." },
     STORE_CATEGORYNAME_NOT_EXIST: { "isSuccess": false, "code": 2024, "message": "해당 카테고리 결과가 존재하지 않습니다." },
+    STORE_CATEGORYINDEX_EMPTY: { "isSuccess": false, "code": 2025, "message": "카테고리번호를 입력해주세요." },
+    STORE_CATEGORYINDEX_NOT_EXIST: { "isSuccess": false, "code": 2026, "message": "해당 카테고리 결과가 존재하지 않습니다." },
 
-    STORE_STOREINTRO_EMPTY: {"isSuccess": false, "code": 2025, "message": "가게 소개를 입력해주세요." },
-    STORE_STARGRADE_EMPTY: {"isSuccess": false, "code": 2026, "message": "가게 별점을 입력해주세요." },
+    STORE_STOREINTRO_EMPTY: {"isSuccess": false, "code": 2027, "message": "가게 소개를 입력해주세요." },
+    STORE_STARGRADE_EMPTY: {"isSuccess": false, "code": 2028, "message": "가게 별점을 입력해주세요." },
 
 
     // Response error

@@ -4,7 +4,7 @@ module.exports = function(app) {
 
 
     //6. 유저 주소 입력
-    app.post('/app/users/postAddress', users.postUserAddress);
+    //app.post('/app/users/postAddress', users.postUserAddress);
 
 
     //16. 유저 회원가입

@@ -44,23 +44,53 @@ exports.createUser = async function (userEmail, userPassword, userName, userPhon
         return response(baseResponse.SUCCESS);
 };
 
+//2. After 로그인 인증 방법 (JWT)
+exports.postSignIn = async function (userEmail, userPassword) {
+    try {
+        // 이메일 여부 확인
+        const emailRows = await coupangeatsUserProvider.emailCheck(userEmail);
+        if (emailRows.length < 1) return errResponse(baseResponse.SIGNIN_EMAIL_WRONG);
 
-//주소 입력
-exports.addUserAddress = async function (userIndex, userAddress) {
-    //try {
+        const selectEmail = emailRows[0].userEmail
 
-    if(!userIndex){
-        return response(baseResponse.USER_USERID_EMPTY);
-    }else{
-        const connection = await pool.getConnection(async (conn) => conn);
-        const addUserAddressResult = await coupangeatsUserDao.updateUserAddress(connection, userIndex, userAddress)
-        connection.release();
+        // 비밀번호 확인 (입력한 비밀번호를 암호화한 것과 DB에 저장된 비밀번호가 일치하는 지 확인함)
+        const hashedPassword = await crypto
+            .createHash("sha512")
+            .update(userPassword)
+            .digest("hex");
 
-        return response(baseResponse.SUCCESS);
-    }
+        const selectUserPasswordParams = [selectEmail, hashedPassword];
+        const passwordRows = await coupangeatsUserProvider.passwordCheck(selectUserPasswordParams);
 
+        if (passwordRows.length < 1) {
+            return errResponse(baseResponse.SIGNIN_PASSWORD_WRONG);
+        }
 
-<<<<<<< HEAD
+        // 계정 상태 확인
+        const userInfoRows = await coupangeatsUserProvider.accountCheck(userEmail);
+
+        if (userInfoRows[0].status === "INACTIVE") {
+            return errResponse(baseResponse.SIGNIN_INACTIVE_ACCOUNT);
+        } else if (userInfoRows[0].status === "DELETED") {
+            return errResponse(baseResponse.SIGNIN_WITHDRAWAL_ACCOUNT);
+        }
+
+        console.log(userInfoRows[0].userIndex) // DB의 userIndex
+
+        //토큰 생성 Service
+        let token = await jwt.sign(
+            {
+                userIndex: userInfoRows[0].userIndex,
+            }, // 토큰의 내용(payload)
+            secret_config.jwtsecret, // 비밀키
+            {
+                expiresIn: "365d",
+                subject: "User",
+            } // 유효 기간 365일
+        );
+
+        return response(baseResponse.SUCCESS, {'userId': userInfoRows[0].id, 'jwt': token});
+
     } catch (err) {
         logger.error(`App - postSignIn Service error\n: ${err.message} \n${JSON.stringify(err)}`);
         return errResponse(baseResponse.DB_ERROR);
@@ -89,10 +119,4 @@ exports.addUserAddress = async function (userIndex, userAddress) {
 //             return errResponse(baseResponse.DB_ERROR);
 //     }
 // };
-=======
-    // } catch (err) {
-    //         logger.error(`App - editUser Service error\n: ${err.message}`);
-    //         return errResponse(baseResponse.DB_ERROR);
-    // }
-};
->>>>>>> d6abfd12d62a0d770c2807770288aaee2f25fd27
+

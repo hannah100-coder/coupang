@@ -7,4 +7,7 @@ module.exports = function(app) {
 
     //17. 로그인 API (JWT 생성)
     app.post('/app/login', users.login);
+
+    //18. 유저 주소 입력 API
+    //app.post('/app/users/postAddress', users.postUserAddress);
 };

@@ -31,15 +31,13 @@ exports.postUsers = async function (req, res) {
     if (!regexEmail.test(userEmail))
         return res.send(response(baseResponse.SIGNUP_EMAIL_ERROR_TYPE));
 
-    //password와 nickname 에 대해서도 형식적 validation 해주기
-
     //형식적 validation _ userName
     // 빈 값 체크
     if (!userName)
         return res.send(response(baseResponse.SIGNUP_USERNAME_EMPTY));
 
     // 길이 체크
-    if (userEmail.length > 20)
+    if (userName.length > 20)
         return res.send(response(baseResponse.SIGNUP_USERNAME_LENGTH));
 
     //형식적 validation _ userPassword
@@ -51,6 +49,14 @@ exports.postUsers = async function (req, res) {
     if (userPassword.length < 6 || userPassword.length>20)
         return res.send(response(baseResponse.SIGNUP_PASSWORD_LENGTH));
 
+    //형식적 validation _ userPhone
+    // 빈 값 체크
+    if (!userPhone)
+        return res.send(response(baseResponse.SIGNUP_PHONE_EMPTY));
+
+    // 길이 체크
+    if (userPhone.length > 12)
+        return res.send(response(baseResponse.SIGNUP_PHONE_LENGTH));
 
     // createUser 함수 실행을 통한 결과 값을 signUpResponse에 저장
     const signUpResponse = await coupangeatsUserService.createUser(

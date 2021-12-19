@@ -55,7 +55,7 @@ module.exports = {
 
     STORE_STOREINTRO_EMPTY: {"isSuccess": false, "code": 2027, "message": "가게 소개를 입력해주세요." },
     STORE_STARGRADE_EMPTY: {"isSuccess": false, "code": 2028, "message": "가게 별점을 입력해주세요." },
-
+    USER_ADDRESS_EMPTY: {"isSuccess": false, "code": 2029, "message": "유저 주소를 입력해주세요." },
 
     // Response error
     SIGNUP_REDUNDANT_EMAIL : { "isSuccess": false, "code": 3001, "message":"중복된 이메일입니다." },

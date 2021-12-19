@@ -23,6 +23,8 @@
     "winston": "^3.2.1",
     "winston-daily-rotate-file": "^4.2.1"
   },
+
+  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hannah100-coder/coupang.git"

@@ -23,39 +23,22 @@ async function insertUserInfo(connection, insertUserInfoParams) {
     return insertUserInfoRow;
 }
 
-// 패스워드 체크
-async function selectUserPassword(connection, selectUserPasswordParams) {
-    const selectUserPasswordQuery = `
-          SELECT userEmail, userName, userPassword
-          FROM User
-          WHERE userEmail = ? AND userPassword = ?;
-          `;
-    const selectUserPasswordRow = await connection.query(
-        selectUserPasswordQuery,
-        selectUserPasswordParams
-    );
-  
-    return selectUserPasswordRow;
-  }
 
-// 유저 계정 상태 체크 (jwt 생성 위해 id 값도 가져온다.)
-async function selectUserAccount(connection, userEmail) {
-    const selectUserAccountQuery = `
-          SELECT status, userIndex
-          FROM User
-          WHERE userEmail = ?;`;
-    const selectUserAccountRow = await connection.query(
-        selectUserAccountQuery,
-        userEmail
-    );
-    return selectUserAccountRow[0];
-  }
+//유저 주소 입력
+async function updateUserAddress(connection, userIndex, userAddress) {
+    const updateUserAddressQuery = `
+  UPDATE User
+  SET userAddress = ?
+  WHERE userIndex = ?;
+  `;
+    const updateUserAddressRow = await connection.query(updateUserAddressQuery, [userAddress, userIndex]);
+    return updateUserAddressRow[0];
+}
 
 
 
 module.exports = {
     selectUserEmail,
     insertUserInfo,
-    selectUserPassword,
-    selectUserAccount
+    updateUserAddress
 };
